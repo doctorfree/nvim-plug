@@ -6,7 +6,7 @@ on:
       - "main"
     paths:
       - "Dockerfile"
-      - "**.lua"
+      - "**.vim"
       - .github/workflows/ci.yml
       - "README.md"
 

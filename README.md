@@ -4,17 +4,17 @@
     <a href="https://github.com/neovim/neovim">
       <img src="https://img.shields.io/badge/Neovim-0.8.0-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white" alt="Neovim"/>
     </a>
-    <a href="https://github.com/Allaman/nvim/pulse">
-      <img src="https://img.shields.io/github/last-commit/Allaman/nvim" alt="Last commit"/>
+    <a href="https://github.com/doctorfree/nvim/pulse">
+      <img src="https://img.shields.io/github/last-commit/doctorfree/nvim" alt="Last commit"/>
     </a>
-    <a href="https://github.com/Allaman/nvim/issues">
-      <img src="https://img.shields.io/github/issues/Allaman/nvim.svg?style=flat-square&label=Issues&color=F05F40" alt="Github issues"/>
+    <a href="https://github.com/doctorfree/nvim/issues">
+      <img src="https://img.shields.io/github/issues/doctorfree/nvim.svg?style=flat-square&label=Issues&color=F05F40" alt="Github issues"/>
     </a>
-    <a href="https://github.com/Allaman/nvim/actions/workflows/ci.yml">
-      <img src="https://github.com/Allaman/nvim/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
+    <a href="https://github.com/doctorfree/nvim/actions/workflows/ci.yml">
+      <img src="https://github.com/doctorfree/nvim/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
     </a>
-    <a href="https://github.com/Allaman/nvim/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/Allaman/nvim?style=flat-square&logo=MIT&label=License" alt="License"/>
+    <a href="https://github.com/doctorfree/nvim/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/doctorfree/nvim?style=flat-square&logo=MIT&label=License" alt="License"/>
     </a>
 </p>
 
@@ -22,15 +22,15 @@
 
 ![](./docs/screenshot.png)
 
-💻 This configuration works on my [Manjaro](https://manjaro.org/) Linux as well as on my macOS and requires Neovim >= 0.8!
+💻 This configuration works on my Arch, Fedora, and Ubuntu Linux systems as well as on my macOS and requires Neovim >= 0.8!
 
-Have a look at my [rice](https://github.com/Allaman/rice) how my Linux machine is configured and at my [mac-setup](https://github.com/Allaman/mac-setup) how my MBP is configured. My [dotfiles](https://github.com/Allaman/dotfiles) are also on GitHub.
+My [Linux dotfiles](https://github.com/doctorfree/dotfiles-linux) are also on GitHub.
 
 ## More Screenshots
 
-_Terminal_: alacritty
+_Terminal_: kitty
 
-_Font_: Jetbrains Mono
+_Font_: Molokai Mono
 
 <details>
 <summary>Leader Key Clusters via which-key</summary>
@@ -272,6 +272,7 @@ Open another instance of Neovim (I always try to keep one running instance of Ne
 
 ## Inspiration
 
+- [Allaman](https://github.com/Allaman/nvim)
 - [LazyVim](https://github.com/LazyVim/LazyVim)
 - [LunarVim](https://github.com/LunarVim/LunarVim)
 - [SpaceVim](https://spacevim.org/)
