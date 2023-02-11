@@ -83,6 +83,7 @@ Plug 'junegunn/vim-easy-align' " A simple, easy-to-use Vim alignment plugin
 Plug 'scrooloose/nerdcommenter'
 Plug 'chrisbra/Colorizer'
 Plug 'KabbAmine/vCoolor.vim'
+Plug 'RRethy/vim-illuminate'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'tpope/vim-git'            " Syntax, indent, and filetype for Git
 " Git integration - :Git (or just :G) calls any arbitrary Git command
@@ -109,7 +110,7 @@ Plug 'vim-airline/vim-airline-themes' " Airline status themes
 " ~/.local/share/nvim/plugged/vim-airline-themes/autoload/airline/themes/
 "   simple, powerlineish, onedark, desertink distinguished, cool, cobalt2,
 "   hybrid, night_owl, luna, solarized_flood, google_dark, ravenpower, molokai
-let g:airline_theme='google_dark'
+let g:airline_theme='asciiville'
 Plug 'fladson/vim-kitty' " Kitty config syntax highlighting for vim
 " Language support
 Plug 'fatih/vim-go'            " Go language support for Vim
@@ -169,7 +170,7 @@ let g:pymode_warnings = 1
 Plug 'zaki/zazen'
 Plug 'yuttie/hydrangea-vim'
 Plug 'flazz/vim-colorschemes'  " One stop shop for vim colorschemes
-Plug 'gmarik/ingretu'
+Plug 'doctorfree/vim-asciiville'
 " Uncomment to play with colorschemes
 " Plug 'felixhummel/setcolors.vim' " Easily switch colorschemes
 
@@ -409,25 +410,51 @@ let g:context_nvim_no_redraw = 1
 
 " Neovim :Terminal
 "
-" Exit NeoVim's terminal emulator (:term) by simply pressing escape
+" Exit Neovim's terminal emulator (:term) by simply pressing escape
 tmap <Esc> <C-\><C-n>
 tmap <C-w> <Esc><C-w>
 "tmap <C-d> <Esc>:q<CR>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
-" Python
-let g:python3_host_prog = '~/.config/nvim/env/bin/python3'
-let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
+" If Python was installed in a virtual environment here
+" let g:python3_host_prog = '~/.config/nvim/env/bin/python3'
+" let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 
 """ Core plugin configuration (lua)
 " Use airline rather than lualine
 " require('lualine-config')
 lua << EOF
 servers = {
-    'pyright',
-    --'tsserver', -- uncomment for typescript. See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for other language servers
+    "pyright",
+    -- LSP
+    "awk_ls",
+    "bashls",
+    "dockerfile-language-server",
+    "json-lsp",
+    -- "marksman",
+    "typescript-language-server",
+    -- "texlab",
+    -- "ltex-ls",
+    "lua-language-server",
+    "pyright",
+    "terraform-ls",
+    "vimls",
+    "yaml-language-server",
+    -- Formatter
+    "black",
+    "prettier",
+    "stylua",
+    "shfmt",
+    -- Linter
+    "eslint_d",
+    "shellcheck",
+    "tflint",
+    "yamllint",
+    -- DAP
+    -- "debugpy",
 }
+
 require('nvim-cmp-config')
 require('lspconfig-config')
 require('treesitter-config')
@@ -530,14 +557,35 @@ if has("autocmd")
 else
   set autoindent    " always set autoindenting on
 endif " has("autocmd")
+
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
-if has("gui_running")
-  colorscheme ingretu
-else
-" colorscheme darkspectrum
-  colorscheme darktango
+
+if has("termguicolors")
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
+
+" If your terminal doesn't handle italics, bold, underline, or undercurl
+" then they can be disabled in the asciiville colorscheme with:
+" let g:asciiville_italic = 0
+" let g:asciiville_bold = 0
+" let g:asciiville_underline = 0
+" let g:asciiville_undercurl = 0
+colorscheme asciiville
+" Asciiville colorscheme commands:
+" :AsciivilleDarkBlueSoft
+" :AsciivilleDarkCyanSoft
+" :AsciivilleDarkCyanHard
+" :AsciivilleNightOrangeSoft
+" :AsciivilleNightOrangeHard
+" :AsciivilleNightRedSoft
+" :AsciivilleNightRedHard
+" :AsciivilleLightSoft
+" :AsciivilleLightHard
+AsciivilleDarkBlueHard
+
 set guifont=Inconsolata:h18
 let g:syntastic_html_checkers = []

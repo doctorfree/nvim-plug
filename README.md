@@ -20,7 +20,7 @@
 
 </div>
 
-![](./docs/screenshot.png)
+![](./assets/screenshot.png)
 
 💻 This configuration works on my Arch, Fedora, and Ubuntu Linux systems as well as on my macOS and requires Neovim >= 0.8!
 
@@ -35,7 +35,7 @@ _Font_: Molokai Mono
 <details>
 <summary>Leader Key Clusters via which-key</summary>
 
-![](./docs/which-key.png)
+![](./assets/which-key.png)
 
 See `./lua/core/config/ui/which-key.lua` for details.
 
@@ -44,23 +44,23 @@ See `./lua/core/config/ui/which-key.lua` for details.
 <details>
 <summary>Go development</summary>
 
-![](./docs/go-dev.png)
+![](./assets/go-dev.png)
 
 </details>
 
 <details>
 <summary>Debugging via DAP</summary>
 
-![](./docs/dap.png)
+![](./assets/dap.png)
 
 </details>
 
 <details>
 <summary>Hydra modes for better shortcut handling</summary>
 
-![](./docs/hydra-window.png)
-![](./docs/hydra-telescope.png)
-![](./docs/hydra-spelling.png)
+![](./assets/hydra-window.png)
+![](./assets/hydra-telescope.png)
+![](./assets/hydra-spelling.png)
 
 </details>
 
