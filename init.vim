@@ -1,47 +1,23 @@
-""" Modified Optixal's Neovim Init.vim by Doctorfree
-"   https://github.com/Optixal/neovim-init.vim (original)
-"   https://github.com/doctorfree/dotfiles-linux/blob/master/.config/nvim/init.vim
+"""
+"      _                      _    _           _   __   __         
+"     / \                    (_)  (_)         (_) [  | [  |        
+"    / _ \     .--.   .---.  __   __  _   __  __   | |  | | .---.  
+"   / ___ \   ( (`\] / /'`\][  | [  |[ \ [  ][  |  | |  | |/ /__\\ 
+" _/ /   \ \_  `'.'. | \__.  | |  | | \ \/ /  | |  | |  | || \__., 
+"|____| |____|[\__) )'.___.'[___][___] \__/  [___][___][___]'.__.' 
+"                                                                  
+"-----------------Neovim Initialization Vimscript----------------
+"
+"  Version : 1.0.0
+"  License : MIT
+"  Author  : Ronald Record
+"  URL     : https://github.com/doctorfree/nvim
+"  Project : https://github.com/doctorfree/Asciiville
+"----------------------------------------------------------------
 "
 """ Vim-Plug managed plugins
 "
-" Using plug.vim Plugin manager from https://github.com/junegunn/vim-plug
-" Commands
-" PlugInstall [name ...] [#threads]  Install plugins
-" PlugUpdate  [name ...] [#threads]  Install or update plugins
-" PlugClean[!]  Remove unlisted plugins (bang version will clean without prompt)
-" PlugUpgrade   Upgrade vim-plug itself
-" PlugStatus    Check the status of plugins
-" PlugDiff      Examine changes from the previous update and the pending changes
-" PlugSnapshot[!] [output path]  Generate script for restoring
-"                                the current snapshot of the plugins
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-" Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Using a non-default branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-" Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
+" Use ':help vim-plug' or ':help plug-options' for assistance with Vim-Plug 
 
 call plug#begin()
 
@@ -69,19 +45,22 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-signify'
-Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-abolish'
 Plug 'bogado/file-line'        " Enable opening a file in a given line
                                " vim index.html:20
                                " vim app/models/user.rb:1337
+Plug 'tpope/vim-sleuth'        " Automatically adjust indentation
+" Make your Vim/Neovim as smart as VSCode
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_disable_startup_warning = 1
+Plug 'jackguo380/vim-lsp-cxx-highlight' " C/C++/Cuda/ObjC semantic highlighting
 Plug 'junegunn/vim-easy-align' " A simple, easy-to-use Vim alignment plugin
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 "   xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 "   nmap ga <Plug>(EasyAlign)
 Plug 'scrooloose/nerdcommenter'
-Plug 'chrisbra/Colorizer'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -110,6 +89,9 @@ Plug 'vim-airline/vim-airline-themes' " Airline status themes
 " ~/.local/share/nvim/plugged/vim-airline-themes/autoload/airline/themes/
 "   simple, powerlineish, onedark, desertink distinguished, cool, cobalt2,
 "   hybrid, night_owl, luna, solarized_flood, google_dark, ravenpower, molokai
+" Uncomment your preferred Airline theme, everforest, google_dark, or asciiville
+" let g:airline_theme='everforest'
+" let g:airline_theme='google_dark'
 let g:airline_theme='asciiville'
 Plug 'fladson/vim-kitty' " Kitty config syntax highlighting for vim
 " Language support
@@ -141,6 +123,17 @@ Plug 'ctrlpvim/ctrlp.vim'  " Fuzzy file, buffer, mru, tag finder for Vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'    " Things you can do with fzf and Vim
 Plug 'romgrk/fzy-lua-native' " Needed for lua_fzy_highlighter in wilder
+Plug 'sheerun/vim-polyglot'  " Better syntax highlighting
+Plug 'folke/which-key.nvim'  " Easily find key map bindings
+" See https://github.com/akinsho/toggleterm.nvim for toggleterm setup options
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+" Uncomment and set OPENAI_API_KEY env var to enable :ChatGPT and :ChatGPTActAs
+" See https://github.com/jackMort/ChatGPT.nvim for setup options and usage
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'jackMort/ChatGPT.nvim'
+
+" Register vim-plug as a plugin to enable help  (e.g. :help plug-options)
+Plug 'junegunn/vim-plug'
 
 if has('nvim')
   function! UpdateRemotePlugins(...)
@@ -170,9 +163,18 @@ let g:pymode_warnings = 1
 Plug 'zaki/zazen'
 Plug 'yuttie/hydrangea-vim'
 Plug 'flazz/vim-colorschemes'  " One stop shop for vim colorschemes
+" Can be commented out if another colorscheme is used
 Plug 'doctorfree/vim-asciiville'
+Plug 'sainnhe/everforest'
 " Uncomment to play with colorschemes
-" Plug 'felixhummel/setcolors.vim' " Easily switch colorschemes
+Plug 'doctorfree/setcolors.vim' " Easily switch colorschemes
+" Colorschemes must have a matching Airline theme with same name
+" Currently available colorschemes with matching Airline theme:
+" alduin angr apprentice badwolf behelit biogoo bubblegum cobalt2 cool cyberpunk
+" desertink deus distinguished fairyfloss hybrid jellybeans kalisi kolor laederon
+" lucius luna minimalist molokai monochrome onedark peaksea seagull seoul256
+" sierra soda solarized sol transparent ubaryd understated wombat zenburn
+let g:mycolorschemes = ['asciiville', 'everforest', 'cool', 'desertink', 'distinguished', 'hybrid', 'luna', 'molokai', 'solarized', 'zenburn']
 
 " Aesthetics - Others
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -182,19 +184,6 @@ Plug 'junegunn/vim-journal'
 " Cheat sheets
 Plug 'sudormrfbin/cheatsheet.nvim'  " :Cheatsheet
 
-" These plugins disabled for now
-"
-" These two seem to conflict with Airline/Wilder highlighting
-" Plug 'Yggdroot/indentLine'
-" Plug 'dkarter/bullets.vim'
-"
-" Plug 'wellle/context.vim'
-" Plug 'tpope/vim-sleuth'        " Automatically adjust indentation
-" Make your Vim/Neovim as smart as VSCode
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" let g:coc_disable_startup_warning = 1
-" Plug 'tomtom/tlib_vim'     " Some utility functions
-" Plug 'tomtom/tcomment_vim' " Easy to use, file-type sensible comments for Vim
 call plug#end()
 
 " General "{{{
@@ -212,17 +201,15 @@ endif
 scriptencoding utf-8           " UTF-8 all the way
 set encoding=utf-8
 
-set timeoutlen=250             " Time to wait after ESC (default causes an annoying delay)
+set timeoutlen=250             " Time to wait after ESC (default causes delay)
 set clipboard+=unnamed         " Yanks go on clipboard instead.
-set pastetoggle=<F10>          " Toggle between paste and normal: for 'safer' pasting from keyboard
+set pastetoggle=<F10>          " Toggle between paste and normal: pasting from keyboard
 set shiftround                 " Round indent to multiple of 'shiftwidth'
 set tags=.git/tags;$HOME       " Consider the repo tags first, then
                                " Walk directory tree upto $HOME looking for tags
                                " Note `;` sets the stop folder. :h file-search
-
 set modeline
-set modelines=5                " Default numbers of lines to read for modeline instructions
-
+set modelines=5                " Default number of lines to read for modeline
 set autowrite                  " Writes on make/shell commands
 set autoread
 
@@ -240,7 +227,7 @@ set ignorecase                 " Be case insensitive when searching
 set smartcase                  " Be case sensitive when input has a capital letter
 set hlsearch                   " Highlight search
 
-let g:is_posix = 1             " Vim's default is archaic bourne shell, bring it up to the 90s
+let g:is_posix = 1             " Vim's default is Bourne shell, bring it up to the 90s
 let mapleader = ','
 let maplocalleader = '	'      " Tab as a local leader
 let g:netrw_banner = 0         " Do not show Netrw help banner
@@ -249,7 +236,6 @@ let g:netrw_banner = 0         " Do not show Netrw help banner
 set wildmode=longest,list
 " Use wilder, see https://github.com/gelguy/wilder.nvimrc
 " for extensive set of configuration examples
-call wilder#setup({'modes': [':', '/', '?']})
 " When in : cmdline mode, wildmenu suggestions will be automatically provided.
 " When searching using /, suggestions from the current buffer will be provided.
 " Substring matching is used by default.
@@ -269,26 +255,20 @@ call wilder#setup({'modes': [':', '/', '?']})
 
 " Airline and Lightline users:
 " wilder#wildmenu_airline_theme() and wilder#wildmenu_lightline_theme() can be used.
-"     \   'highlighter': wilder#basic_highlighter(),
-"     \   'highlights': {'default': 'Statusline'},
-"     \   'highlights': {},
-"     \   'separator': ' · ',
-"     \   'separator': '  ',
-call wilder#set_option('renderer', wilder#wildmenu_renderer(
-      \ wilder#wildmenu_airline_theme({
-      \   'highlighter': wilder#lua_fzy_highlighter(),
-      \   'separator': ' · ',
-      \ })))
-"     \ 'apply_incsearch_fix': 1,
-"     \ }))
-" call wilder#set_option('renderer', wilder#wildmenu_renderer({
-"       \ 'apply_incsearch_fix': 1,
-"       \ }))
-
-" "}}}
+"
+if exists('g:plugs["wilder.nvim"]')
+  if !empty(glob('g:plugs["wilder.nvim"]'))
+    call wilder#setup({'modes': [':', '/', '?']})
+    call wilder#set_option('renderer', wilder#wildmenu_renderer(
+        \ wilder#wildmenu_airline_theme({
+        \   'highlighter': wilder#lua_fzy_highlighter(),
+        \   'separator': ' · ',
+        \ })))
+  endif
+endif
 
 " Formatting "{{{
-set fo+=o  " Insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+set fo+=o  " Insert the current comment leader after 'o' or 'O' in Normal mode.
 set fo-=r  " Do not automatically insert a comment leader after an enter
 set fo-=t  " Do no auto-wrap text using textwidth (does not apply to comments)
 
@@ -330,7 +310,7 @@ set stl+=%-14.(%l,%c%V%)\ %P
 
 set foldenable                " Turn on folding
 set foldmethod=marker         " Fold on the marker
-set foldlevel=100             " Don't autofold anything (but I can still fold manually)
+set foldlevel=100             " Don't autofold anything (but still fold manually)
 
 set foldopen=block,hor,tag    " What movements open folds
 set foldopen+=percent,mark
@@ -394,14 +374,6 @@ let g:signify_sign_delete = '│'
 let g:signify_sign_change = '│'
 hi DiffDelete guifg=#ff5555 guibg=none
 
-" indentLine
-let g:indentLine_char = '▏'
-let g:indentLine_defaultGroup = 'NonText'
-" Disable indentLine from concealing json and markdown syntax (e.g. ```)
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
 " FixCursorHold for better performance
 let g:cursorhold_updatetime = 100
 
@@ -416,29 +388,29 @@ tmap <C-w> <Esc><C-w>
 "tmap <C-d> <Esc>:q<CR>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
-
-" If Python was installed in a virtual environment here
-" let g:python3_host_prog = '~/.config/nvim/env/bin/python3'
-" let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
+" Replace these with actual paths
+if !empty(glob('/path/to/python3'))
+  let g:python3_host_prog = '/path/to/python3'
+endif
+if !empty(glob('/path/to/doq'))
+  let g:pydocstring_doq_path = '/path/to/doq'
+endif
 
 """ Core plugin configuration (lua)
 " Use airline rather than lualine
 " require('lualine-config')
-lua << EOF
+" Add these:  cssmodules ansible haskell sql
+if exists('g:plugs["nvim-treesitter"]')
+  if !empty(glob('g:plugs["nvim-treesitter"]'))
+    lua << EOF
 servers = {
     "pyright",
     -- LSP
     "awk_ls",
     "bashls",
     "dockerfile-language-server",
-    "json-lsp",
-    -- "marksman",
     "typescript-language-server",
-    -- "texlab",
-    -- "ltex-ls",
     "lua-language-server",
-    "pyright",
-    "terraform-ls",
     "vimls",
     "yaml-language-server",
     -- Formatter
@@ -451,8 +423,6 @@ servers = {
     "shellcheck",
     "tflint",
     "yamllint",
-    -- DAP
-    -- "debugpy",
 }
 
 require('nvim-cmp-config')
@@ -462,6 +432,24 @@ require('telescope-config')
 require('nvim-tree-config')
 require('diagnostics')
 EOF
+  endif
+endif
+
+if exists('g:plugs["coc.nvim"]')
+  if !empty(glob('g:plugs["coc.nvim"]'))
+    lua require('coc-config')
+    if exists('g:plugs["vim-airline"]')
+      if !empty(glob('g:plugs["vim-airline"]'))
+        let g:airline#extensions#coc#enabled = 1
+        let airline#extensions#coc#error_symbol = 'E:'
+        let airline#extensions#coc#warning_symbol = 'W:'
+        let g:airline#extensions#coc#show_coc_status = 1
+        let airline#extensions#coc#stl_format_err = '%C(L%L)'
+        let airline#extensions#coc#stl_format_warn = '%C(L%L)'
+      endif
+    endif
+  endif
+endif
 
 " Use the :Cheatsheet command which automatically uses Telescope
 " if installed or falls back to showing all the cheatsheet files
@@ -470,8 +458,10 @@ EOF
 " By default the <leader> key is \.
 "
 " Default cheatsheet configuration:
-lua << EOF
-require("cheatsheet").setup({
+if exists('g:plugs["cheatsheet.nvim"]')
+  if !empty(glob('g:plugs["cheatsheet.nvim"]'))
+    lua << EOF
+require('cheatsheet').setup({
     -- Whether to show bundled cheatsheets
 
     -- For generic cheatsheets like default, unicode, nerd-fonts, etc
@@ -502,11 +492,22 @@ require("cheatsheet").setup({
     }
 })
 EOF
+  endif
+endif
 
-""" Custom Functions
+if exists('g:plugs["toggleterm.nvim"]')
+  if !empty(glob('g:plugs["toggleterm.nvim"]'))
+    lua require('toggleterm').setup()
+  endif
+endif
+if exists('g:plugs["ChatGPT.nvim"]')
+  if !empty(glob('g:plugs["ChatGPT.nvim"]'))
+    lua require('chatgpt').setup()
+  endif
+endif
 
-""" Custom Mappings (vim) (lua custom mappings are within individual lua config files)
-
+""" Custom Mappings (lua custom mappings are within individual lua config files)
+"
 " Core
 let mapleader=","
 nmap <leader>q :NvimTreeFindFileToggle<CR>
@@ -528,9 +529,6 @@ nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set number<CR><S-a>
 " Python
 autocmd Filetype python nmap <leader>d <Plug>(pydocstring)
 autocmd FileType python nmap <leader>p :Black<CR>
-
-" Solidity (requires: npm install --save-dev prettier prettier-plugin-solidity)
-autocmd Filetype solidity nmap <leader>p :0,$!npx prettier %<CR>
 
 " Telescope mappings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -563,8 +561,8 @@ if !exists(":DiffOrig")
 endif
 
 if has("termguicolors")
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 
@@ -574,6 +572,7 @@ endif
 " let g:asciiville_bold = 0
 " let g:asciiville_underline = 0
 " let g:asciiville_undercurl = 0
+" Comment out to use everforest below
 colorscheme asciiville
 " Asciiville colorscheme commands:
 " :AsciivilleDarkBlueSoft
@@ -585,7 +584,29 @@ colorscheme asciiville
 " :AsciivilleNightRedHard
 " :AsciivilleLightSoft
 " :AsciivilleLightHard
-AsciivilleDarkBlueHard
+if exists(":AsciivilleDarkBlueHard")
+  AsciivilleDarkBlueHard
+endif
+
+" For dark version.
+set background=dark
+" For light version.
+" set background=light
+
+" Set contrast.
+" This configuration option should be placed before `colorscheme everforest`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:everforest_background = 'hard'
+
+" For better performance
+let g:everforest_better_performance = 1
+" For a transparent background, set to 2 for status line transparency as well
+let g:everforest_transparent_background = 1
+" Dim inactive windows
+let g:everforest_dim_inactive_windows = 1
+
+" Uncomment to use the Everforest colorscheme
+" colorscheme everforest
 
 set guifont=Inconsolata:h18
 let g:syntastic_html_checkers = []
