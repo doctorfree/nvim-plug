@@ -1,14 +1,14 @@
 -- References to ./lua/
 
 -- Load global functions
-require("core.globals")
+require("globals")
 -- Plugin management via lazy
-require("core.lazy")
+require("lazy-init")
 -- Plugin management via Packer
--- require("core.packer")
+-- require("packer")
 -- "Global" Keymappings
-require("core.mappings")
+require("mappings")
 -- All non plugin related (vim) options
-require("core.options")
+require("options")
 -- Vim autocommands/autogroups
-require("core.autocmd")
+require("autocmd")

@@ -37,7 +37,7 @@ _Font_: Jetbrains Mono
 
 ![](./docs/which-key.png)
 
-See `./lua/core/config/ui/which-key.lua` for details.
+See `./lua/config/ui/which-key.lua` for details.
 
 </details>
 
@@ -231,15 +231,15 @@ Hit `<leader>` to start `which-key` which gives you more mappings grouped by top
 ├── after            # file specific settings
 ├── init.lua         # main entry point
 ├── lazy-lock.json   # Lockfile for Lazy.nvim
-├── lua/core         # lua configuration
+├── lua              # lua configuration
 ├── snippets         # snippets directory (luasnip style)
 └── spell            # my spell files linked from another repo
 ```
 
-`tree1 lua/core`
+`tree1 lua`
 
 ```sh
-lua/core
+lua
 ├── autocmd.lua      # autocmds for various things
 ├── config           # configuration folder for plugins
 ├── globals.lua      # global functions
@@ -250,17 +250,17 @@ lua/core
 ├── settings.lua     # user settings to configure
 ```
 
-Each plugin to be installed is defined in `./lua/core/plugins/` in a separate file.
+Each plugin to be installed is defined in `./lua/plugins/` in a separate file.
 
 ## User configuration
 
 The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
-All options can be found in `./lua/core/settings.lua`.
+All options can be found in `./lua/settings.lua`.
 
 ## Remove plugins
 
-You can remove unwanted plugins by just removing the appropriate file in `./lua/core/plugins/`. Lazy will take care of removing the plugin.
+You can remove unwanted plugins by just removing the appropriate file in `./lua/plugins/`. Lazy will take care of removing the plugin.
 
 **Keep in mind that some plugins are configured to work in conjunction with other plugins. For instance, autopairs is configured in `./lua/vim/config/treesitter.lua`. For now there is no logic implemented that cross-checks such dependencies.**
 
@@ -268,7 +268,7 @@ You can remove unwanted plugins by just removing the appropriate file in `./lua/
 
 If you want to follow my method adding a plugin is straight forward:
 
-Create a file in `./lua/core/plugins/` following the expected format of Lazy.
+Create a file in `./lua/plugins/` following the expected format of Lazy.
 
 Open another instance of Neovim (I always try to keep one running instance of Neovim open in case I messed up my config) and run `Lazy sync`.
 

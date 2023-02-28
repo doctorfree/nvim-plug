@@ -5,7 +5,7 @@ local M = {
   },
   commit = "ea91aa820a6cecc57bde764bb23612fff26a15de",
   config = function()
-    require("core.plugins.hydra.hydra")
+    require("plugins.hydra.hydra")
   end,
 }
 

@@ -5,7 +5,7 @@ local M = {
   },
   ft = { "go" },
   config = function()
-    local icons = require("core.utils.icons")
+    local icons = require("utils.icons")
     require("go").setup({
       -- NOTE: all LSP and formatting related options are disabeld.
       -- NOTE: LSP is handled by lsp.lua and formatting is handled by null-ls.lua
@@ -28,7 +28,7 @@ local M = {
       lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
       lsp_diag_underline = false,
       lsp_on_attach = function(client, bufnr)
-        local utils = require("core.plugins.lsp.utils")
+        local utils = require("plugins.lsp.utils")
         utils.custom_lsp_attach(client, bufnr)
         local wk = require("which-key")
         local default_options = { silent = true }

@@ -1,6 +1,6 @@
 local nvim_lsp = require("lspconfig")
-local utils = require("core.plugins.lsp.utils")
-local languages = require("core.plugins.lsp.languages")
+local utils = require("plugins.lsp.utils")
+local languages = require("plugins.lsp.languages")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- enable autoclompletion via nvim-cmp

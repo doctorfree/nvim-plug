@@ -4,7 +4,7 @@ local M = {
     -- disable v
     -- local presets = require("which-key.plugins.presets")
     -- presets.operators["v"] = nil
-    local icons = require("core.utils.icons")
+    local icons = require("utils.icons")
 
     require("which-key").setup({
       plugins = {

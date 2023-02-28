@@ -4,7 +4,7 @@ local M = {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    require("core.plugins.lsp.null-ls")
+    require("plugins.lsp.null-ls")
   end,
 }
 

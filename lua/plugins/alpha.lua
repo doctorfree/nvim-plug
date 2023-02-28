@@ -4,7 +4,7 @@ local M = {
     "kyazdani42/nvim-web-devicons",
   },
   config = function()
-    require("core.plugins.alpha.alpha")
+    require("plugins.alpha.alpha")
   end,
 }
 

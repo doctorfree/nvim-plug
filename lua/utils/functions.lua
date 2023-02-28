@@ -106,9 +106,9 @@ end
 
 -- returns the require for use in `config` parameter of packer's `use`
 -- expects the name of the config file
--- prefixes with `core.config.`
+-- prefixes with `config.`
 M.get_config = function(name)
-  return string.format('require("core.config.%s")', name)
+  return string.format('require("config.%s")', name)
 end
 
 return M

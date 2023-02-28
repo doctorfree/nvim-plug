@@ -5,7 +5,7 @@ local M = {
     { "folke/neodev.nvim", config = true },
   },
   config = function()
-    require("core.plugins.lsp.lsp")
+    require("plugins.lsp.lsp")
   end,
 }
 

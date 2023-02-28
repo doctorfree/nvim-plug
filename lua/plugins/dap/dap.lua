@@ -47,8 +47,8 @@ local function configure_exts()
 end
 
 local function configure_debuggers()
-  require("core.plugins.dap.python").setup()
-  require("core.plugins.dap.go").setup()
+  require("plugins.dap.python").setup()
+  require("plugins.dap.go").setup()
 end
 
 local function create_mapping()
@@ -63,7 +63,7 @@ function M.setup()
   configure_exts() -- Extensions
   configure_debuggers() -- Debugger
   create_mapping() -- which-key mapping
-  require("core.plugins.hydra.dap") -- enable Hydra head
+  require("plugins.hydra.dap") -- enable Hydra head
 end
 
 return M

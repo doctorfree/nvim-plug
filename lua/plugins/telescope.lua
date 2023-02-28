@@ -10,13 +10,13 @@ local M = {
     "ptethng/telescope-makefile",
   },
   config = function()
-    local settings = require("core.settings")
+    local settings = require("settings")
     local telescope = require("telescope")
     local telescopeConfig = require("telescope.config")
     local actions = require("telescope.actions")
     local action_layout = require("telescope.actions.layout")
     local fb_actions = require("telescope").extensions.file_browser.actions
-    local icons = require("core.utils.icons")
+    local icons = require("utils.icons")
 
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
     if settings.telescope_grep_hidden then

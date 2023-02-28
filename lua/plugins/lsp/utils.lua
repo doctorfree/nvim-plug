@@ -1,4 +1,4 @@
-local utils = require("core.utils.functions")
+local utils = require("utils.functions")
 M = {}
 
 -- must be global or the initial state is not working
@@ -15,7 +15,7 @@ AUTOFORMAT_ACTIVE = true
 -- toggle null-ls's autoformatting
 M.toggle_autoformat = function()
   AUTOFORMAT_ACTIVE = not AUTOFORMAT_ACTIVE
-  require("core.utils.functions").notify(
+  require("utils.functions").notify(
     string.format("Autoformatting %s", AUTOFORMAT_ACTIVE and "on" or "off"),
     1,
     "lsp.utils"

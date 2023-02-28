@@ -11,16 +11,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
--- Remap space as leader key
+-- Remap ',' as leader key
 -- Must be before lazy
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.g.mapleader = " "
+vim.keymap.set({ "n", "v" }, ",", "<Nop>", { silent = true })
+vim.g.mapleader = ","
 
-require("lazy").setup("core.plugins", {
+require("lazy").setup("plugins", {
   -- defaults = { lazy = true },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
-    missing = false,
+    missing = true,
   },
   change_detection = {
     -- automatically check for config file changes and reload the ui

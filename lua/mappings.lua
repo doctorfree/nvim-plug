@@ -21,7 +21,7 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch and ESC
 
 -- move over a closing element in insert mode
 map("i", "<C-l>", function()
-  return require("core.utils.functions").escapePair()
+  return require("utils.functions").escapePair()
 end)
 
 -- search like you are used to
@@ -52,13 +52,13 @@ end, { desc = "Toggle cursorline" })
 map(
   "n",
   "<leader>to",
-  "<cmd>lua require('core.utils.functions').toggle_colorcolumn()<cr>",
+  "<cmd>lua require('utils.functions').toggle_colorcolumn()<cr>",
   { desc = "Toggle colorcolumn" }
 )
 map(
   "n",
   "<leader>tt",
-  "<cmd>lua require('core.plugins.lsp.utils').toggle_virtual_text()<cr>",
+  "<cmd>lua require('plugins.lsp.utils').toggle_virtual_text()<cr>",
   { desc = "Toggle Virtualtext" }
 )
 map("n", "<leader>ts", "<cmd>SymbolsOutline<cr>", { desc = "Toggle SymbolsOutline" })
@@ -96,7 +96,7 @@ wk.register({
   f = {
     name = "Files",
     b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
-    f = { "<cmd>" .. require("core.utils.functions").project_files() .. "<cr>", "Find File" },
+    f = { "<cmd>" .. require("utils.functions").project_files() .. "<cr>", "Find File" },
     p = { "<cmd>Neotree reveal toggle<cr>", "Toggle Filetree" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     s = { "<cmd>w<cr>", "Save Buffer" },
@@ -112,7 +112,7 @@ wk.register({
     name = "Quickfix",
     j = { "<cmd>cnext<cr>", "Next Quickfix Item" },
     k = { "<cmd>cprevious<cr>", "Previous Quickfix Item" },
-    q = { "<cmd>lua require('core.utils.functions').toggle_qf()<cr>", "Toggle quickfix list" },
+    q = { "<cmd>lua require('utils.functions').toggle_qf()<cr>", "Toggle quickfix list" },
     t = { "<cmd>TodoQuickFix<cr>", "Show TODOs" },
   },
   t = { name = "Toggles" },

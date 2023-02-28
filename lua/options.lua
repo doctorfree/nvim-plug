@@ -1,10 +1,10 @@
-local settings = require("core.settings")
-local utils = require("core.utils.functions")
+local settings = require("settings")
+local utils = require("utils.functions")
 local o = vim.opt
 local fn = vim.fn
 
 if not settings.disable_winbar then
-  o.winbar = "%{%v:lua.require'core.utils.winbar'.get_winbar()%}"
+  o.winbar = "%{%v:lua.require'utils.winbar'.get_winbar()%}"
 end
 if settings.global_statusline then
   o.laststatus = 3
