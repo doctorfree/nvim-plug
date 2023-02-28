@@ -1,282 +1,314 @@
-<h1 align="center">My Nvim Configuration</h1>
+# Asciiville Neovim text editor
 
-<div align="center"><p>
-    <a href="https://github.com/neovim/neovim">
-      <img src="https://img.shields.io/badge/Neovim-0.8.0-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white" alt="Neovim"/>
-    </a>
-    <a href="https://github.com/doctorfree/nvim/pulse">
-      <img src="https://img.shields.io/github/last-commit/doctorfree/nvim" alt="Last commit"/>
-    </a>
-    <a href="https://github.com/doctorfree/nvim/issues">
-      <img src="https://img.shields.io/github/issues/doctorfree/nvim.svg?style=flat-square&label=Issues&color=F05F40" alt="Github issues"/>
-    </a>
-    <a href="https://github.com/doctorfree/nvim/actions/workflows/ci.yml">
-      <img src="https://github.com/doctorfree/nvim/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
-    </a>
-    <a href="https://github.com/doctorfree/nvim/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/doctorfree/nvim?style=flat-square&logo=MIT&label=License" alt="License"/>
-    </a>
-</p>
+[Neovim](https://neovim.io) is a fork of the [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) text editor that strives to improve the extensibility and maintainability of Vim. Some features of the fork include built-in Language Server Protocol support, support for asynchronous I/O, and support for scripting using Lua.
 
-</div>
+![](screenshots/neovim.png)
 
-![](./assets/screenshot.png)
+## Table of Contents
 
-💻 This configuration works on my Arch, Fedora, and Ubuntu Linux systems as well as on my macOS and requires Neovim >= 0.8!
+1. [Introduction](#introduction)
+1. [Installation](#installation)
+1. [Configuration](#configuration)
+    1. [Language servers](#language-servers)
+    1. [Key mappings](#key-mappings)
+1. [Plugins](#plugins)
+1. [Screenshots](#screenshots)
+1. [Usage](#usage)
 
-My [Linux dotfiles](https://github.com/doctorfree/dotfiles-linux) are also on GitHub.
+## Introduction
 
-## More Screenshots
+Neovim has the same configuration syntax as Vim (unless vim9script is used); thus the same configuration file can be used with both editors, although there are minor differences in details of options. If the added features of Neovim are not used, Neovim is compatible with almost all of Vim's features.
 
-_Terminal_: kitty
+The Neovim project was started in 2014, with some Vim community members offering early support of the high-level refactoring effort to provide better scripting, plugins, and integration with modern GUIs. The project is free software and its source code is available on [GitHub](https://github.com/neovim/neovim).
 
-_Font_: Molokai Mono
+The Neovim editor is available in native packaging format on almost all Linux distributions as well as packaging for Mac and Windows, making it possible to install it on almost every operating system. However, some distributions provide an older version of Neovim and the Asciiville configuration of Neovim takes advantage of many of the recently implemented features. In order to provide a current version of Neovim on all supported Asciiville platforms, the Asciiville version of Neovim is installed with [Homebrew](https://brew.sh). In addition to installing the latest version of Neovim, the Asciiville initialization process installs a number of Neovim plugins and supporting utilities. This includes extensive support for a wide variety of programming languages, both syntax highlighting and syntax checking as well as autocompletion. The Asciiville configuration of Neovim includes Asciiville themes and color schemes for both Neovim itself and the [Airline status plugin](https://github.com/vim-airline/vim-airline).
 
-<details>
-<summary>Leader Key Clusters via which-key</summary>
+Repository: https://github.com/neovim/neovim
 
-![](./assets/which-key.png)
-
-See `./lua/core/config/ui/which-key.lua` for details.
-
-</details>
-
-<details>
-<summary>Go development</summary>
-
-![](./assets/go-dev.png)
-
-</details>
-
-<details>
-<summary>Debugging via DAP</summary>
-
-![](./assets/dap.png)
-
-</details>
-
-<details>
-<summary>Hydra modes for better shortcut handling</summary>
-
-![](./assets/hydra-window.png)
-![](./assets/hydra-telescope.png)
-![](./assets/hydra-spelling.png)
-
-</details>
-
-## Motivation
-
-There are many great Neovim configurations (see [Inspiration](#inspiration)), that give you a pleasant experience right out of the box, available. However, I am a long time (Neo)Vim user with a specific workflow and needs. Additionally, I do not have any Lua background and was not willing to spent too much time into that. Therefore, it was quite hard for me to customize and strip down the existing configs to my needs especially because the code is quite sophisticated.
-
-I decided to move to my own fresh Lua based Neovim from my good old vimrc trying to accomplish the following principles.
-
-## Principles
-
-1. Migrate to Lua based alternative plugins respectively use only Lua based plugins (if possible).
-1. Keep the config as maintainable as possible knowing that this would possibly impact the code quality.
-1. Modular and meaningful directory structure and file naming.
-1. Just make it work and not make it beautiful 😃. Of course, Neovim itself must look beautiful, but my focus is not on beautiful code or on utilizing all Lua features.
-
-## Features
-
-### General ⚙️
-
-- Package management and plugin configuration via [lazy.nvim](https://github.com/folke/lazy.nvim)
-- Mnemonic keyboard mappings inspired by [Spacemacs](https://www.spacemacs.org/) via [which-key.nvim](https://github.com/folke/which-key.nvim); no more than three keystrokes for each keybinding
-- Submodes powered by [Hydra.nvim](https://github.com/anuvyklack/hydra.nvim)
-- Complete transformation via [noice.nvim](https://github.com/folke/noice.nvim)
-- Fully featured status line via [mini.nvim](https://github.com/echasnovski/mini.nvim)
-- Terminal integration via [nvim-toggleterm.lua](https://github.com/akinsho/nvim-toggleterm.lua)
-- Fancy notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify)
-- Better writing with [ltex-ls](https://valentjn.github.io/ltex/index.html)
-- Dashboard via [alpha.nvim](https://github.com/goolord/alpha-nvim) with recent files and quick links
-- Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), [nightfox](https://github.com/EdenEast/nightfox.nvim), and more
-- Fast startup < 150 ms 🚀
-
-### Navigation 🧭
-
-- [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) for all your search needs
-- Project management with [Project.nvim](https://github.com/ahmedkhalf/project.nvim)
-- File tree navigation/manipulation via [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- Better Tmux navigation with your home row via [Navigator.nvim](https://github.com/numToStr/Navigator.nvim)
-- Convenient jumping through windows with [nvim-window-picker](https://gitlab.com/s1n7ax/nvim-window-picker)
-
-### Coding 🖥️
-
-- Auto completion powered by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- Built-in LSP configured via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- Debugging for Go and Python via [nvim-dap](https://github.com/mfussenegger/nvim-dap) and friends
-- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and [Tresitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) for your syntax needs
-- Auto formatting via [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
-- Excellent Go support via LSP and [go.nvim](https://github.com/ray-x/go.nvim) including sensible keybindings
-- Always know where you are in your code via [nvim-navic](https://github.com/SmiteshP/nvim-navic)
-- Git integration via [Neogit](https://github.com/TimUntersberger/neogit) and [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- Outlining symbols with [symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
-- Snippets provided by [Luasnip](https://github.com/L3MON4D3/LuaSnip) and [friendly snippets](https://github.com/rafamadriz/friendly-snippets) with autocompletion
-- Schema integration via LSPs for Kubernetes, package.json, GitHub workflows, gitlab-ci.yml, kustomization.yaml, and more
-
-## Try out
-
-If you have [Docker](https://www.docker.com/) on your system you can try out this config via the provided `Dockerfile`
-
-💡 Due to installing required tools like LSPs, CLI apps, etc. the image is approximately 3 GB large
-
-### Build the image
-
-There are some issues with building a multi architecture Docker image via GitHub Action. Until I sorted that out, you can build the Docker image locally on your own
-
-```sh
-docker build -t nvim .
-```
-
-### Just start nvim
-
-```sh
-docker run --name nvim --rm -it nvim
-```
-
-### Mount a local directory (to ~/mount) and start nvim
-
-```sh
-docker run --name nvim --rm -it -v ${HOME}/tmp:/home/nvim/mount nvim
-```
-
-### Start container in bash instead of nvim
-
-```sh
-docker run --name nvim --rm -it --entrypoint=/bin/bash nvim
-```
+Website: https://neovim.io/
 
 ## Installation
 
-I created an installation [script](install.sh) that sets up all required tools on a fresh machine to work with my Neovim config.
+Neovim is installed during Asciiville initialization with the command
+`ascinit`. If you performed the initialization and chose not to install
+Neovim, it can be installed later with the command `ascinit neovim`.
 
-For now, it works on Debian/Ubuntu and Arch. MacOS will be added soon.
+The Asciiville Neovim installation installs the latest release of Neovim,
+its dependencies, plugins, configuration files, and several utilities
+required by Neovim and the plugin extensions.
 
-USE AT YOUR OWN RISK!!
+## Configuration
 
-## Requirements
+The primary Neovim configuration and startup file is `$HOME/.config/nvim/init.vim`.
 
-There are some tools that are required in order to use some features/plugins:
+Some common startup options set in this configuration file include:
 
-### Tools
-
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [fd](https://github.com/sharkdp/fd)
-- [fzf](https://github.com/junegunn/fzf)
-
-For neo-tree delete functionality:
-
-- [trash-cli](https://github.com/andreafrancia/trash-cli)
-
-For Latex functionality:
-
-- [Tectonic](https://tectonic-typesetting.github.io/en-US/)
-- [Skim](https://skim-app.sourceforge.io/)
-
-### LSPs, Formatting, Linters, DAP
-
-The following programs should be installed on your system so that the appropriate tools can be installed:
-
-- Go
-- Python
-- NodeJs > 12
-- Cargo
-
-#### Go
-
-Go related dependencies are managed by `go.nvim` and are installed by running `:GoInstallBinaries` (when a Go file is loaded). They are installed in your `$GOPATH`.
-
-#### All other
-
-All other dependencies are managed by [Mason](https://github.com/williamboman/mason.nvim) and [Mason tool installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim). Tools are installed by running `:MasonToolsInstall` (in `vim.fn.stdpath("data") .. "mason"`). [Mason requirements](https://github.com/williamboman/mason.nvim#requirements) must be available on your system.
-
-## Bindings
-
-| Mode | key                    | binding                                                |
-| ---- | ---------------------- | ------------------------------------------------------ |
-| n    | space                  | Leader key                                             |
-| n    | \<c-h \| j \| k \| l\> | Change window focus (including Tmux panes)             |
-| n    | \<leader\>Tab          | Switch to previously opened buffer                     |
-| n    | \<Tab\>                | Switch to next buffer (bnext)                          |
-| n    | \<S-Tab\>              | Switch to previous buffer (bprev)                      |
-| n    | st                     | Visual selection with Treesitter hint textobject       |
-| v    | sa                     | Add surrounding                                        |
-| n    | sd                     | Delete surrounding                                     |
-| n    | sr                     | Replace surrounding                                    |
-| n    | \<c-Tab\>              | Start auto completion (without typing anything)        |
-| n/v  | ga                     | Start mini.align (align text)                          |
-| n    | gcc                    | Toggle line comment                                    |
-| n/v  | gc                     | Toggle line comment (works with movements like `gcip`) |
-| n    | ss                     | Search 2 char (mini.jump2d)                            |
-| i/s  | \<c-j\>                | Luasnip expand/forward                                 |
-| i/s  | \<c-k\>                | Luasnip backward                                       |
-| i    | \<c-h\>                | Luasnip select choice                                  |
-| n    | \<c-n\>                | Toggleterm (opens/hides a full terminal in Neovim)     |
-| i    | \<c-l\>                | Move out of closing brackets                           |
-| n    | \<CR\>                 | Start incremental selection                            |
-| v    | \<Tab\>                | Increment selection                                    |
-| v    | \<S-Tab\>              | Decrement selection                                    |
-| v    | \<S-j\>                | Move selected lines down                               |
-| v    | \<S-k\>                | Move selected lines up                                 |
-
-## Structure
-
-`tree1 .`
-
-```sh
-.
-├── after            # file specific settings
-├── init.lua         # main entry point
-├── lazy-lock.json   # Lockfile for Lazy.nvim
-├── lua/core         # lua configuration
-├── snippets         # snippets directory (luasnip style)
-└── spell            # my spell files linked from another repo
+```vim
+set autoindent              " indent a new line the same amount as the line just typed
+filetype plugin indent on   " allows auto-indenting depending on file type
+set history=256             " Number of things to remember in history
+set ruler                   " Show the cursor position all the time
+set showcmd                 " Display an incomplete command in statusline
+set encoding=utf-8          " Use UTF-8 character encoding
+set timeoutlen=250          " Time to wait after ESC (default causes delay)
+set clipboard+=unnamed      " Yanks go on clipboard instead.
+set pastetoggle=<F10>       " Toggle between paste and normal: pasting from keyboard
+set shiftround              " Round indent to multiple of 'shiftwidth'
+set tags=.git/tags;$HOME    " Consider the repo tags first, then
+set autowrite               " Writes on make/shell commands
+set nobackup                "
+set nowritebackup           "
+set hidden                  " Current buffer to background without writing to disk
+set incsearch               " Show matches while typing
+set ignorecase              " Be case insensitive when searching
+set smartcase               " Be case sensitive when input has a capital letter
+set hlsearch                " Highlight search
+set tabstop=2               " Tab size eql 2 spaces
+set softtabstop=2           " See multiple spaces as tabstops
+set shiftwidth=2            " Default shift width for indents
+set expandtab               " Replace tabs with ${tabstop} spaces
+set smarttab                "
+set indentkeys-=0#          " Do not break indent on #
+set synmaxcol=250           " limit syntax highlighting to 250 columns
+set nonumber                " line numbers Off
+set showmatch               " Show matching brackets.
+set matchtime=2             " Bracket blinking.
+set novisualbell            " No blinking
+set noerrorbells            " No noise.
+set vb t_vb=                " Disable any beeps or flashes on error
+set statusline=%<%f\        " Custom statusline
+set foldenable              " Turn on folding
+set foldmethod=marker       " Fold on the marker
+set foldlevel=100           " Don't autofold anything (but still fold manually)
+set foldopen=block,hor,tag  " What movements open folds
+set wildmode=longest,list   " get bash-like tab completions
 ```
 
-`tree1 lua/core`
+Many more settings are included, the above serve as examples only.
 
-```sh
-lua/core
-├── autocmd.lua      # autocmds for various things
-├── config           # configuration folder for plugins
-├── globals.lua      # global functions
-├── lazy.lua         # Lazy configuration
-├── mappings.lua     # key bindings
-├── options.lua      # vim options
-├── plugins          # plugins and their configuration
-├── settings.lua     # user settings to configure
+In addition to an extensive `$HOME/.config/nvim/init.vim` Neovim initialization
+and startup file, Asciiville installs and configures the
+[Plug plugin manager](https://github.com/junegunn/vim-plug), a customized
+Asciiville color scheme, a customized Airline plugin theme, and configuration
+for many Neovim plugins including:
+
+- [coc.nvim](https://github.com/neoclide/coc.nvim)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+
+These core plugins and their configuration provide a plugin infrastructure
+which many additional plugins can leverage.
+
+Some of the plugins and Neovim configuration are used to provide an
+aesthetically pleasing appearance while others contribute functional extensions.
+Some are just for fun.
+
+If you have an [OpenAI API Key](https://openai.com/api) set in your shell
+environment during Asciiville initialization (the environment variable
+`OPENAI_API_KEY`) the initialization will detect that and enable the
+Neovim [ChatGPT plugin](https://github.com/jackMort/ChatGPT.nvim). This allows
+you to query [ChatGPT](https://openai.com/blog/chatgpt) from within Neovim.
+
+### Language servers
+
+The following language servers and associated Neovim plugins are installed
+and configured by Asciiville initialization:
+
+- [ansiblels](https://github.com/ansible/ansible-language-server) : Ansible configuration management language server
+- [awk_ls](https://github.com/Beaglefoot/awk-language-server) : AWK language server
+- [bashls](https://github.com/mads-hartmann/bash-language-server) : Bash language server
+- [ccls](https://github.com/MaskRay/ccls) : C, C++, and Objective-C language server
+- [cmake](https://github.com/regen100/cmake-language-server) : CMake language server
+- [cssmodules_ls](https://github.com/antonk52/cssmodules-language-server) : CSS module autocompletion and go-to-definition
+- [dockerls](https://github.com/rcjsuen/dockerfile-language-server-nodejs) : Docker language server
+- [hls](https://github.com/haskell/haskell-language-server) : Haskell language server
+- [lua_ls](https://github.com/luals/lua-language-server) : Lua language server
+- [pyright](https://github.com/microsoft/pyright) : Python language server and static type checker
+- [rust_analyzer](https://github.com/rust-analyzer/rust-analyzer) : Rust language server
+- [sqlls](https://github.com/joe-re/sql-language-server) : SQL language server
+- [tsserver](https://github.com/typescript-language-server/typescript-language-server) : TypeScript language server
+- [vimls](https://github.com/iamcco/vim-language-server) : VimScript language server
+- [yamlls](https://github.com/redhat-developer/yaml-language-server) : YAML language server
+
+The Asciiville Neovim installation uses the
+[go.nvim Neovim plugin](https://github.com/ray-x/go.nvim) to provide a modern
+Go development environment inside Neovim. The go.nvim plugin is based on gopls,
+treesitter AST, Dap and a variety of Go tools.
+
+For other language servers, see [LSP server configurations](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md).
+
+The language servers are utilized by the `nvim-lspconfig` and `nvim-cmp` Neovim
+plugins to provide diagnostics, syntax highlighting, formatting, and more
+for a variety of programming and text formatting languages. For example, when
+editing a file these facilities will provide you with a list of suggested
+completions as you are typing. When editing a supported language (e.g. Lua,
+YAML, Python, C++) the language servers are used to denote errors, warnings,
+hints, and info. Help is often available for the word or line on which the
+cursor is positioned by typing `Shift-K` and `Ctrl-K`.
+
+The configuration for language servers and facilities used by `nvim-lspconfig`
+and `nvim-cmp` can be found in `~/.config/nvim/lua/`. Current support:
+
+```
+Parser/Features         H L F I J
+  - css                 ✓ . ✓ ✓ ✓
+  - javascript          ✓ ✓ ✓ ✓ ✓
+  - python              ✓ ✓ ✓ ✓ ✓
+  - go                  ✓ ✓ ✓ ✓ ✓
+  - json                ✓ ✓ ✓ ✓ .
+  - vim                 ✓ ✓ ✓ . ✓
+  - lua                 ✓ ✓ ✓ ✓ ✓
+  - c                   ✓ ✓ ✓ ✓ ✓
+  - help                ✓ . . . ✓
+  - query               ✓ ✓ ✓ ✓ ✓
+  - yaml                ✓ ✓ ✓ ✓ ✓
+  - comment             ✓ . . . .
+  - toml                ✓ ✓ ✓ ✓ ✓
+  - html                ✓ ✓ ✓ ✓ ✓
+  - bash                ✓ ✓ ✓ . ✓
+  - cmake               ✓ . ✓ . .
+  - regex               ✓ . . . .
+  - java                ✓ ✓ . ✓ ✓
+
+  Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections
 ```
 
-Each plugin to be installed is defined in `./lua/core/plugins/` in a separate file.
+### Key mappings
 
-## User configuration
+Neovim has many built-in
+[key bindings](https://neovim.io/doc/user/map.html#key-mapping).
+In addition to these, many more key mappings are defined in the Asciiville
+Neovim configuration and by plugins.
 
-The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
+Key mapping is used to change the meaning of typed keys. The most common use
+is to define a sequence of commands for a function key. For example:
 
-All options can be found in `./lua/core/settings.lua`.
+```vim
+:map <F2> a<C-R>=strftime("%c")<CR><Esc>
+```
 
-## Remove plugins
+This key map appends the current date and time after the cursor
+(in `<> notation <>`) when the `<F2>` function key is pressed.
 
-You can remove unwanted plugins by just removing the appropriate file in `./lua/core/plugins/`. Lazy will take care of removing the plugin.
+Another example key mapping can be seen in the
+[SetColorSchemes.vim](https://github.com/doctorfree/SetColorSchemes.vim) plugin.
+This plugin provides an easy way to configure which color schemes to use
+and how to switch or cycle between them. The list of color schemes
+can be specified by setting the `mycolorschemes` global variable.
+The default setting for this is:
 
-**Keep in mind that some plugins are configured to work in conjunction with other plugins. For instance, autopairs is configured in `./lua/vim/config/treesitter.lua`. For now there is no logic implemented that cross-checks such dependencies.**
+```vim
+let g:mycolorschemes = ['asciiville', 'everforest', 'cool', 'desertink', 'distinguished', 'hybrid', 'luna', 'molokai', 'solarized', 'zenburn']
+```
 
-## Add plugins
+The `SetColorSchemes.vim` plugin creates the following key mappings:
 
-If you want to follow my method adding a plugin is straight forward:
+- `<F7>` Previous colorscheme and airline theme
+- `<F8>` Next colorscheme and airline theme
+- `<F9>` Random colorscheme and airline theme
 
-Create a file in `./lua/core/plugins/` following the expected format of Lazy.
+For example, when `<F8>` is pressed the next colorscheme in the list is used.
+Note that both the Neovim colorscheme and the Airline theme are set. These
+two color schemes need to be coordinated to provide proper contrast and
+readability. The default colorschemes above take care of this. If you change
+the `mycolorschemes` global variable make sure to use color schemes with
+compatible [Airline themes](https://github.com/vim-airline/vim-airline-themes).
 
-Open another instance of Neovim (I always try to keep one running instance of Neovim open in case I messed up my config) and run `Lazy sync`.
+## Plugins
 
-## Inspiration
+See a list of
+[Neovim plugins installed, configured, and enabled in Asciiville](Plugins-urls.md).
+Each of the plugins used in the Asciiville Neovim configuration is listed
+and linked to its GitHub repository where configuration and user documentation
+can be found.
 
-- [Allaman](https://github.com/Allaman/nvim)
-- [LazyVim](https://github.com/LazyVim/LazyVim)
-- [LunarVim](https://github.com/LunarVim/LunarVim)
-- [SpaceVim](https://spacevim.org/)
-- [Doom-nvim](https://github.com/NTBBloodbath/doom-nvim)
-- [spf13-vim](https://github.com/spf13/spf13-vim)
-- [NvChad](https://nvchad.github.io/)
-- [Janus](https://github.com/carlhuda/janus)
+## Screenshots
+
+Neovim editing sessions illustrating `:vsplit <filename>`, Python script on left
+and Bash script on right. The first screenshot is using the `asciiville`
+colorscheme, the second uses the `everforest` colorscheme, and the third
+screenshot is using the `solarized` colorscheme. The colorschemes
+and `vim-airline` themes are included with Asciiville and can be switched
+between using `<F8>` (along with several other compatible colorschemes).
+
+Here we can see an example of the search bar enabled by the Wilder plugin with
+completions and suggestions matching the search. These suggestions can be
+rapidly accessed with `<Tab>`.
+
+![](screenshots/neovim-wilder.png)
+
+In this screenshot we see the `vim-airline` plugin status bar. The status bar
+displays different information depending on what mode you are in. Color themes
+for airline are coordinated with the selected Neovim colorscheme.
+
+![](screenshots/neovim-airline.png)
+
+This screenshot illustrates the autocompletion and suggestions provided by
+the `nvim-cmp` plugin. Custom icons are used to denote type, rounded borders
+and styling provide an easy on the eyes look and feel.
+
+![](screenshots/nvim-cmp.png)
+
+## Usage
+
+Extensive documentation for Neovim is available at https://neovim.io/doc/user/
+
+Learning Vi/Vim/Neovim is a lifetime task. It's a complex and expanding Universe.
+But getting started isn't too difficult and learning something new everyday is fun.
+Don't get discouraged. The reward will be worth the effort.
+
+Most, if not all, of the information in the
+[Vim cheat sheet](https://github.com/doctorfree/cheat-sheets-plus/blob/main/text/vim.md)
+applies equally to `nvim`.
+
+Asciiville installs and enables the
+[Neovim cheatsheets plugin](https://github.com/sudormrfbin/cheatsheet.nvim)
+that provides searchable cheatsheets from within Neovim itself.
+
+Neovim and Vim provide several modes for different kinds of text manipulation.
+
+Pressing 'i' in normal mode enters insert mode.
+'<Esc>' goes back to normal mode, which doesn't allow regular text insertion.
+
+### Open a file
+```shell
+nvim path/to/file
+```
+
+### Enter text editing mode (insert mode):
+```shell
+<Esc>i
+```
+
+### Copy ("yank") or cut ("delete") the current line (paste it with `P`):
+```shell
+<Esc>yy|dd
+```
+
+### Enter normal mode and undo the last operation:
+```shell
+<Esc>u
+```
+
+### Search for a pattern in the file (press `n`/`N` to go to next/previous match):
+```shell
+<Esc>/search_pattern<Enter>
+```
+
+### Perform a regular expression substitution in the whole file:
+```shell
+<Esc>:%s/regular_expression/replacement/g<Enter>
+```
+
+### Enter normal mode and save (write) the file, and quit:
+```shell
+<Esc>:wq<Enter>
+```
+
+### Quit without saving:
+```shell
+<Esc>:q!<Enter>
+```
