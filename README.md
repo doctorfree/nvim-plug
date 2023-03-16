@@ -1,6 +1,11 @@
 # Asciiville Neovim text editor
 
-[Neovim](https://neovim.io) is a fork of the [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) text editor that strives to improve the extensibility and maintainability of Vim. Some features of the fork include built-in Language Server Protocol support, support for asynchronous I/O, and support for scripting using Lua.
+**[Note:]** This is an older `vimscript` based Neovim configuration using `vim-plug`.
+While it is loaded with features and quite spiffy, Asciiville will be moving
+to the [Lazyman](https://github.com/doctorfree/nvim-lazyman) `Lua` based
+`Lazy` Neovim configuration.
+
+[Neovim](https://neovim.io) is a fork of the [Vim](<https://en.wikipedia.org/wiki/Vim_(text_editor)>) text editor that strives to improve the extensibility and maintainability of Vim. Some features of the fork include built-in Language Server Protocol support, support for asynchronous I/O, and support for scripting using Lua.
 
 ![](screenshots/neovim.png)
 
@@ -9,8 +14,8 @@
 1. [Introduction](#introduction)
 1. [Installation](#installation)
 1. [Configuration](#configuration)
-    1. [Language servers](#language-servers)
-    1. [Key mappings](#key-mappings)
+   1. [Language servers](#language-servers)
+   1. [Key mappings](#key-mappings)
 1. [Plugins](#plugins)
 1. [Screenshots](#screenshots)
 1. [Usage](#usage)
@@ -274,41 +279,49 @@ Pressing 'i' in normal mode enters insert mode.
 '<Esc>' goes back to normal mode, which doesn't allow regular text insertion.
 
 ### Open a file
+
 ```shell
 nvim path/to/file
 ```
 
 ### Enter text editing mode (insert mode):
+
 ```shell
 <Esc>i
 ```
 
 ### Copy ("yank") or cut ("delete") the current line (paste it with `P`):
+
 ```shell
 <Esc>yy|dd
 ```
 
 ### Enter normal mode and undo the last operation:
+
 ```shell
 <Esc>u
 ```
 
 ### Search for a pattern in the file (press `n`/`N` to go to next/previous match):
+
 ```shell
 <Esc>/search_pattern<Enter>
 ```
 
 ### Perform a regular expression substitution in the whole file:
+
 ```shell
 <Esc>:%s/regular_expression/replacement/g<Enter>
 ```
 
 ### Enter normal mode and save (write) the file, and quit:
+
 ```shell
 <Esc>:wq<Enter>
 ```
 
 ### Quit without saving:
+
 ```shell
 <Esc>:q!<Enter>
 ```
