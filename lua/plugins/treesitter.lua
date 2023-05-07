@@ -6,7 +6,7 @@ require('nvim-treesitter.configs').setup {
     "comment",
     "css",
     "go",
-    "help",
+    "vimdoc",
     "html",
     "java",
     "javascript",
