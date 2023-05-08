@@ -313,9 +313,39 @@ local opts = {
 alpha.setup(opts)
 
 -- Disable folding on alpha buffer
-vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable
-]])
-vim.cmd([[
-  autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-]])
+vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
+
+local alpha_group = vim.api.nvim_create_augroup("alpha_autocmd", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "AlphaReady",
+  group = alpha_group,
+  callback = function()
+    require("lualine").hide({
+      place = { "statusline", "tabline", "winbar" },
+      unhide = false,
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufUnload", {
+  buffer = 0,
+  desc = "enable status and tabline after alpha",
+  group = alpha_group,
+  callback = function()
+    require("lualine").hide({
+      place = { "statusline", "tabline", "winbar" },
+      unhide = true,
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "AlphaReady",
+  group = alpha_group,
+  callback = function()
+    vim.cmd([[
+      setlocal showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
+      setlocal laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
+    ]])
+  end,
+})

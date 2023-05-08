@@ -29,6 +29,8 @@ call plug#begin()
 " Core (treesitter, nvim-lspconfig, nvim-cmp, nvim-telescope, etc)
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/playground'
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -276,6 +278,7 @@ set stl+=[%{&ff}]             " Show fileformat
 set stl+=%y%m%r%=
 set stl+=%-14.(%l,%c%V%)\ %P
 
+lua require('plugins.mason')
 " Need to configure Neodev prior to LSP
 if exists('g:plugs["neodev.nvim"]')
   if !empty(glob(g:plugs['neodev.nvim'].dir.'/lua/neodev/init.lua'))

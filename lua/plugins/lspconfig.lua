@@ -15,8 +15,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
     local bufmap = function(mode, lhs, rhs)
-      local opts = {buffer = true}
-      vim.keymap.set(mode, lhs, rhs, opts)
+      local bopts = {buffer = true}
+      vim.keymap.set(mode, lhs, rhs, bopts)
     end
 
     -- Displays hover information about the symbol under the cursor
