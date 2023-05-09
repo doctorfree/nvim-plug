@@ -319,6 +319,9 @@ require('plugins.lspconfig')
 require('plugins.treesitter')
 require('plugins.telescope')
 require('plugins.diagnostics')
+require('lsp.config')
+require('lsp.setup')
+require('lsp.functions')
 EOF
   endif
 endif
