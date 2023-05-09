@@ -371,11 +371,6 @@ if has("termguicolors")
     endif
   endif
 endif
-lua << EOF
-require("notify").setup({
-  background_colour = "#000000",
-})
-EOF
 if exists('g:plugs["nvim-dap"]')
   if !empty(glob(g:plugs['nvim-dap'].dir.'/lua/nvim-dap/plugin/dap.lua'))
     lua require('plugins.dap')
@@ -472,11 +467,6 @@ if exists('g:plugs["nvim-navic"]')
     lua require('plugins.navic')
   endif
 endif
-if exists('g:plugs["noice.nvim"]')
-  if !empty(glob(g:plugs['noice.nvim'].dir.'/lua/noice/init.lua'))
-    lua require('plugins.noice')
-  endif
-endif
 if exists('g:plugs["lsp_signature.nvim"]')
   if !empty(glob(g:plugs['lsp_signature.nvim'].dir.'/lua/lsp_signature/init.lua'))
     lua require('plugins.signature')
@@ -505,6 +495,13 @@ endif
 
 " Perform any necessary colorscheme setup
 lua require("themes.init")
+
+" Configure noice and notify after colorscheme
+if exists('g:plugs["noice.nvim"]')
+  if !empty(glob(g:plugs['noice.nvim'].dir.'/lua/noice/init.lua'))
+    lua require('plugins.noice')
+  endif
+endif
 
 " Set global variables
 lua require("globals")

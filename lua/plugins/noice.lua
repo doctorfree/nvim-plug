@@ -1,5 +1,27 @@
 local enable_noice = require("settings").enable_noice
 
+-- Some colorschemes do not yet support the NotifyBackground highlight group
+local notify_bg = "NotifyBackground"
+local ok, _ = pcall(vim.api.nvim_get_hl_id_by_name, notify_bg, true)
+if not ok then
+  notify_bg = "NotifyERRORBody"
+  ok, _ = pcall(vim.api.nvim_get_hl_id_by_name, notify_bg, true)
+  if not ok then
+    notify_bg = "#000000"
+  end
+end
+
+require("notify").setup({
+  background_colour = notify_bg,
+  timeout = 3000,
+  max_height = function()
+    return math.floor(vim.o.lines * 0.75)
+  end,
+  max_width = function()
+    return math.floor(vim.o.columns * 0.75)
+  end,
+})
+
 if enable_noice then
   require("noice").setup({
     cmdline = {
