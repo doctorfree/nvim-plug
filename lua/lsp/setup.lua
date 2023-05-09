@@ -7,6 +7,8 @@ if not mason_ok or not mason_lsp_ok then
   return
 end
 
+local servers = require("settings").servers
+
 mason.setup({
   ui = {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
@@ -16,18 +18,7 @@ mason.setup({
 
 mason_lsp.setup({
   -- A list of servers to automatically install if they're not already installed
-  ensure_installed = {
-    "bashls",
-    "cssls",
-    "eslint",
-    "graphql",
-    "html",
-    "jsonls",
-    "lua_ls",
-    "tailwindcss",
-    "tsserver",
-    "prismals",
-  },
+  ensure_installed = servers,
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
   -- This setting has no relation with the `ensure_installed` setting.
   -- Can either be:

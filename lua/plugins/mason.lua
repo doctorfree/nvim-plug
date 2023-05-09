@@ -1,3 +1,5 @@
+local servers = require("settings").servers
+
 local opts = {
   ensure_installed = {
     "actionlint",
@@ -40,31 +42,7 @@ else
   install_ensured()
 end
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    "bashls",
-    "cssmodules_ls",
-    "denols",
-    "dockerls",
-    "eslint",
-    "gopls",
-    "graphql",
-    "html",
-    "jdtls",
-    "jsonls",
-    "julials",
-    "ltex",
-    "lua_ls",
-    "marksman",
-    "pylsp",
-    "pyright",
-    "sqlls",
-    "tailwindcss",
-    "terraformls",
-    "texlab",
-    "tsserver",
-    "vimls",
-    "yamlls",
-  },
+  ensure_installed = servers,
   automatic_installation = true,
 })
 

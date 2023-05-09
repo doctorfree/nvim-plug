@@ -62,6 +62,33 @@ M.treesitter_ensure_installed = {
   "vim",
   "yaml",
 }
+-- Language servers to be installed by Mason
+M.servers = {
+  "bashls",
+  "cssls",
+  "dockerls",
+  "eslint",
+  "gopls",
+  "graphql",
+  "hls",
+  "html",
+  "jdtls",
+  "jsonls",
+  "julials",
+  "ltex",
+  "lua_ls",
+  "marksman",
+  "prismals",
+  "pylsp",
+  "pyright",
+  "sqlls",
+  "tailwindcss",
+  "terraformls",
+  "texlab",
+  "tsserver",
+  "vimls",
+  "yamlls",
+}
 
 -- enable greping in hidden files
 M.telescope_grep_hidden = true
