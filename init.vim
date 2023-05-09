@@ -68,7 +68,8 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'SmiteshP/nvim-navic'
 Plug 'jvgrootveld/telescope-zoxide'
-" Plug 'folke/noice.nvim'
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'
 
 " A pretty list for showing diagnostics, references, telescope results, quickfix
@@ -187,7 +188,6 @@ Plug 'folke/which-key.nvim'  " Easily find key map bindings
 " See https://github.com/akinsho/toggleterm.nvim for toggleterm setup options
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'folke/zen-mode.nvim'
-Plug 'MunifTanjim/nui.nvim'
 
 " Set OPENAI_API_KEY environment var to enable :ChatGPT and :ChatGPTActAs
 " See https://github.com/jackMort/ChatGPT.nvim for setup options and usage
@@ -286,34 +286,9 @@ if exists('g:plugs["neodev.nvim"]')
   endif
 endif
 """ Core plugin configuration (lua)
-" Add these:  cssmodules ansible haskell sql
 if exists('g:plugs["nvim-treesitter"]')
   if !empty(glob(g:plugs['nvim-treesitter'].dir.'/autoload/nvim_treesitter.vim'))
     lua << EOF
-servers = {
-    "pyright",
-    -- LSP
-    "awk_ls",
-    "bashls",
-    "dockerfile-language-server",
-    "typescript-language-server",
-    "lua_ls",
-    "vimls",
-    "texlab",
-    "jsonls",
-    "yamlls",
-    -- Formatter
-    "black",
-    "prettier",
-    "stylua",
-    "shfmt",
-    -- Linter
-    "eslint_d",
-    "shellcheck",
-    "tflint",
-    "yamllint",
-}
-
 require('plugins.nvim-cmp')
 require('plugins.lspconfig')
 require('plugins.treesitter')
@@ -396,6 +371,11 @@ if has("termguicolors")
     endif
   endif
 endif
+lua << EOF
+require("notify").setup({
+  background_colour = "#000000",
+})
+EOF
 if exists('g:plugs["nvim-dap"]')
   if !empty(glob(g:plugs['nvim-dap'].dir.'/lua/nvim-dap/plugin/dap.lua'))
     lua require('plugins.dap')
@@ -492,11 +472,11 @@ if exists('g:plugs["nvim-navic"]')
     lua require('plugins.navic')
   endif
 endif
-" if exists('g:plugs["noice.nvim"]')
-"   if !empty(glob(g:plugs['noice.nvim'].dir.'/lua/noice/init.lua'))
-"     lua require('plugins.noice')
-"   endif
-" endif
+if exists('g:plugs["noice.nvim"]')
+  if !empty(glob(g:plugs['noice.nvim'].dir.'/lua/noice/init.lua'))
+    lua require('plugins.noice')
+  endif
+endif
 if exists('g:plugs["lsp_signature.nvim"]')
   if !empty(glob(g:plugs['lsp_signature.nvim'].dir.'/lua/lsp_signature/init.lua'))
     lua require('plugins.signature')

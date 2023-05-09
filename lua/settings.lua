@@ -23,7 +23,7 @@ M.list = false
 -- which list chars to schow
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 -- Noice heavily changes the Neovim UI ...
-M.enable_noice = false
+M.enable_noice = true
 -- Enable/disable tabline or winbar or both
 -- Disable tabline with nvim-navic location
 M.disable_tabline = false

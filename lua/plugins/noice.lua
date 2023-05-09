@@ -1,4 +1,7 @@
-require("noice").setup({
+local enable_noice = require("settings").enable_noice
+
+if enable_noice then
+  require("noice").setup({
     cmdline = {
       enabled = true, -- enables the Noice cmdline UI
       view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
@@ -188,3 +191,4 @@ require("noice").setup({
     ---@type NoiceFormatOptions
     format = {}, --- @see section on formatting
   })
+end
