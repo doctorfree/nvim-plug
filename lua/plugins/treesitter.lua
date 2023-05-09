@@ -1,26 +1,7 @@
+local parsers = require("settings").treesitter_ensure_installed
+
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "bash",
-    "go",
-    "html",
-    "java",
-    "json",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "query",
-    "python",
-    "regex",
-    "toml",
-    "vim",
-    "vimdoc",
-    "yaml",
-    "c",
-    "cmake",
-    "comment",
-    "css",
-    "javascript",
-  },
+  ensure_installed = parsers,
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
   -- Automatically install missing parsers when entering buffer
