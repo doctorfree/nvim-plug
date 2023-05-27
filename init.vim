@@ -278,7 +278,11 @@ set stl+=[%{&ff}]             " Show fileformat
 set stl+=%y%m%r%=
 set stl+=%-14.(%l,%c%V%)\ %P
 
-lua require('plugins.mason')
+if exists('g:plugs["mason.nvim"]')
+  if !empty(glob(g:plugs['mason.nvim'].dir.'/lua/mason/init.lua'))
+    lua require('plugins.mason')
+  endif
+endif
 " Need to configure Neodev prior to LSP
 if exists('g:plugs["neodev.nvim"]')
   if !empty(glob(g:plugs['neodev.nvim'].dir.'/lua/neodev/init.lua'))
