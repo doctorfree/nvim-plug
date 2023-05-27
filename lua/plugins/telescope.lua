@@ -67,7 +67,7 @@ telescope.setup({
       '*.dat', '*.mca', '__pycache__', '.mozilla/', '.electron/',
       '.vpython-root/', '.gradle/', '.nuget/', '.cargo/', '.evernote/',
       '.azure-functions-core-tools/', 'yay/', '.local/share/Trash/',
-      '.local/share/nvim/swap/', 'code%-other/', '.terraform'
+      '.local/share/nvim-Plug/swap/', 'code%-other/', '.terraform'
     },
     -- used for grep_string and live_grep
     vimgrep_arguments = {

@@ -174,11 +174,11 @@ quit_btn.opts.hl = 'AlphaShortcut'
 -- Neovim Configuration
 local health_btn = dashboard.button('h', '  Neovim Health', ':checkhealth<CR>')
 health_btn.opts.hl = 'AlphaHeader'
-local settings_btn = dashboard.button('s', '  Neovim Settings', ':e ~/.config/nvim/lua/settings.lua<CR>')
+local settings_btn = dashboard.button('s', '  Neovim Settings', ':e ~/.config/nvim-Plug/lua/settings.lua<CR>')
 settings_btn.opts.hl = 'AlphaHeader'
-local options_btn = dashboard.button('o', '  Neovim Options', ':e ~/.config/nvim/lua/options.lua<CR>')
+local options_btn = dashboard.button('o', '  Neovim Options', ':e ~/.config/nvim-Plug/lua/options.lua<CR>')
 options_btn.opts.hl = 'AlphaHeader'
-local mappings_btn = dashboard.button('m', '  Keyboard Mappings', ':e ~/.config/nvim/lua/mappings.lua<CR>')
+local mappings_btn = dashboard.button('m', '  Keyboard Mappings', ':e ~/.config/nvim-Plug/lua/mappings.lua<CR>')
 mappings_btn.opts.hl = 'AlphaHeader'
 
 -- Plugin Management
@@ -242,7 +242,7 @@ local function scandir(directory)
     return i
 end
 
-local plugdir = os.getenv("HOME") .. "/.local/share/nvim/plugged"
+local plugdir = os.getenv("HOME") .. "/.local/share/nvim-Plug/plugged"
 local numplugs = scandir(plugdir)
 
 -- If TZ is not set or for some reason os.date() is returning UTC

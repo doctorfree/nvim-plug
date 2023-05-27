@@ -1,11 +1,11 @@
 In addition to the default Neovim key bindings, the following key bindings
 are created by the installed plugins and init.vim:
 
-n  <Space>f    *@<Lua 158: ~/.config/nvim/lua/lspconfig-config.lua:32>
+n  <Space>f    *@<Lua 158: ~/.config/nvim-Plug/lua/lspconfig-config.lua:32>
 n  <Space>ca   *@<Lua 156: /home/linuxbrew/.linuxbrew/Cellar/neovim/HEAD-556f864/share/nvim/runtime/lua/vim/lsp/buf.lua:751>
 n  <Space>rn   *@<Lua 155: /home/linuxbrew/.linuxbrew/Cellar/neovim/HEAD-556f864/share/nvim/runtime/lua/vim/lsp/buf.lua:264>
 n  <Space>D    *@<Lua 154: /home/linuxbrew/.linuxbrew/Cellar/neovim/HEAD-556f864/share/nvim/runtime/lua/vim/lsp/buf.lua:84>
-n  <Space>wl   *@<Lua 153: ~/.config/nvim/lua/lspconfig-config.lua:25>
+n  <Space>wl   *@<Lua 153: ~/.config/nvim-Plug/lua/lspconfig-config.lua:25>
 n  <Space>wr   *@<Lua 152: /home/linuxbrew/.linuxbrew/Cellar/neovim/HEAD-556f864/share/nvim/runtime/lua/vim/lsp/buf.lua:514>
 n  <Space>wa   *@<Lua 151: /home/linuxbrew/.linuxbrew/Cellar/neovim/HEAD-556f864/share/nvim/runtime/lua/vim/lsp/buf.lua:477>
 n  K           *@<Lua 147: /home/linuxbrew/.linuxbrew/Cellar/neovim/HEAD-556f864/share/nvim/runtime/lua/vim/lsp/buf.lua:40>
@@ -81,7 +81,7 @@ n  ,j            :set filetype=journal<CR>
 n  ,h            :RainbowParentheses!!<CR>
 n  ,a            gaip*
 x  ,a            gaip*
-n  ,r            :so ~/.config/nvim/init.vim<CR>
+n  ,r            :so ~/.config/nvim-Plug/init.vim<CR>
 n  ,q            :NvimTreeFindFileToggle<CR>
 n  <p            <Plug>(unimpaired-put-below-leftward)
 n  <P            <Plug>(unimpaired-put-above-leftward)
@@ -439,11 +439,11 @@ n  <Plug>(unimpaired-last) * :<C-U><C-R>=v:count ? v:count . "argument" : "last"
 n  <Plug>(unimpaired-first) * :<C-U><C-R>=v:count ? v:count . "argument" : "first"<CR><CR>
 n  <Plug>(unimpaired-next) * :<C-U>exe "".(v:count ? v:count : "")."next"<CR>
 n  <Plug>(unimpaired-previous) * :<C-U>exe "".(v:count ? v:count : "")."previous"<CR>
-x  <M-i>       * <Lua 87: ~/.local/share/nvim/plugged/vim-illuminate/lua/illuminate.lua:279>
-o  <M-i>       * <Lua 86: ~/.local/share/nvim/plugged/vim-illuminate/lua/illuminate.lua:279>
-n  <M-p>       * <Lua 85: ~/.local/share/nvim/plugged/vim-illuminate/lua/illuminate.lua:272>
+x  <M-i>       * <Lua 87: ~/.local/share/nvim-Plug/plugged/vim-illuminate/lua/illuminate.lua:279>
+o  <M-i>       * <Lua 86: ~/.local/share/nvim-Plug/plugged/vim-illuminate/lua/illuminate.lua:279>
+n  <M-p>       * <Lua 85: ~/.local/share/nvim-Plug/plugged/vim-illuminate/lua/illuminate.lua:272>
                  Move to previous reference
-n  <M-n>       * <Lua 56: ~/.local/share/nvim/plugged/vim-illuminate/lua/illuminate.lua:265>
+n  <M-n>       * <Lua 56: ~/.local/share/nvim-Plug/plugged/vim-illuminate/lua/illuminate.lua:265>
                  Move to next reference
 n  <M-w>         :silent VCoolIns ra<CR>
 n  <M-v>         :silent VCoolIns h<CR>

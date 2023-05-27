@@ -1,7 +1,7 @@
 """ Vim compatible Neovim init
 "
-"   Copy this file to ~/.config/nvim/init.vim to enable
-"   or invoke Neovim as: nvim -u ~/.config/nvim/init-compat.vim
+"   Copy this file to ~/.config/nvim-Plug/init.vim to enable
+"   or invoke Neovim as: nvim -u ~/.config/nvim-Plug/init-compat.vim
 "   This Neovim config will source your existing Vim ~/.vimrc
 "
 set runtimepath^=~/.vim runtimepath+=~/.vim/after

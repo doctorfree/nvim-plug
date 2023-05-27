@@ -454,7 +454,7 @@ endif
 "
 " To use the Startify dashboard rather than Alpha, uncomment this line,
 " comment the Alpha entries, and uncomment the startify Plug entry above
-" source $HOME/.config/nvim/startify.vim
+" source $HOME/.config/nvim-Plug/startify.vim
 "
 if exists('g:plugs["toggleterm.nvim"]')
   if !empty(glob(g:plugs['toggleterm.nvim'].dir.'/lua/toggleterm.lua'))

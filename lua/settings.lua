@@ -1,7 +1,7 @@
 local M = {}
 
 -- theme: monokai-pro, nightfox, tokyonight, kanagawa, catppuccin, everforest
--- refer to the relevant themes settings file in ~/.config/nvim/lua/themes/
+-- refer to the relevant themes settings file in ~/.config/nvim-Plug/lua/themes/
 -- for different styles and settings for your selected theme.
 M.theme = "catppuccin"
 -- enable transparency if the theme supports it

@@ -74,7 +74,7 @@ map("t", "<C-w>", "<Esc><C-w>")
 -- Core
 -- map("n", "<leader>q", ":NvimTreeFindFileToggle<CR>")
 map("n", [[\]], "<leader>q")
-map("n", "<leader>r", ":so ~/.config/nvim/init.vim<CR>")
+map("n", "<leader>r", ":so ~/.config/nvim-Plug/init.vim<CR>")
 map("x", "<leader>a", "gaip*")
 map("n", "<leader>a", "gaip*")
 map("n", "<leader>h", ":RainbowParentheses!!<CR>")
@@ -146,7 +146,7 @@ wk.register({
   m = {
     name = "Misc",
     C = { "<cmd>:CBcatalog<cr>", "Commentbox Catalog" },
-    l = { "<cmd>source ~/.config/nvim/snippets/*<cr>", "Reload snippets" },
+    l = { "<cmd>source ~/.config/nvim-Plug/snippets/*<cr>", "Reload snippets" },
     p = { "<cmd>Lazy check<cr>", "Lazy check" },
   },
   q = {

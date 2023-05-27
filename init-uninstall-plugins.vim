@@ -1,6 +1,6 @@
 """ Use this Neovim configuration to uninstall all plugins
 "
-"   Open Neovim with 'nvim -u ~/.config/nvim/init-uninstall-plugins.vim'
+"   Open Neovim with 'nvim -u ~/.config/nvim-Plug/init-uninstall-plugins.vim'
 "   Run ':PlugClean'
 "
 "   After plugins have been removed, reinstall the Neovim plugins with:
@@ -356,7 +356,7 @@ endif
 let mapleader=","
 nmap <leader>q :NvimTreeFindFileToggle<CR>
 nmap \ <leader>q
-nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+nmap <leader>r :so ~/.config/nvim-Plug/init.vim<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
 nmap <leader>h :RainbowParentheses!!<CR>

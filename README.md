@@ -44,7 +44,7 @@ required by Neovim and the plugin extensions.
 
 ## Configuration
 
-The primary Neovim configuration and startup file is `$HOME/.config/nvim/init.vim`.
+The primary Neovim configuration and startup file is `$HOME/.config/nvim-Plug/init.vim`.
 
 Some common startup options set in this configuration file include:
 
@@ -91,7 +91,7 @@ set wildmode=longest,list   " get bash-like tab completions
 
 Many more settings are included, the above serve as examples only.
 
-In addition to an extensive `$HOME/.config/nvim/init.vim` Neovim initialization
+In addition to an extensive `$HOME/.config/nvim-Plug/init.vim` Neovim initialization
 and startup file, Asciiville installs and configures the
 [Plug plugin manager](https://github.com/junegunn/vim-plug), a customized
 Asciiville color scheme, a customized Airline plugin theme, and configuration
@@ -155,7 +155,7 @@ hints, and info. Help is often available for the word or line on which the
 cursor is positioned by typing `Shift-K` and `Ctrl-K`.
 
 The configuration for language servers and facilities used by `nvim-lspconfig`
-and `nvim-cmp` can be found in `~/.config/nvim/lua/`. Current support:
+and `nvim-cmp` can be found in `~/.config/nvim-Plug/lua/`. Current support:
 
 ```
 Parser/Features         H L F I J

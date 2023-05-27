@@ -4,7 +4,7 @@
 # Copyright (C) 2022 Michael Peter <michaeljohannpeter@gmail.com>
 #
 # Install Neovim and all dependencies for the Neovim config at:
-#     https://github.com/doctorfree/Asciiville/conf/nvim/init.vim
+#     https://github.com/doctorfree/Asciiville/conf/nvim-Plug/init.vim
 #
 # Adapted for Asciiville from https://github.com/Allaman/nvim.git
 # See https://github.com/doctorfree/nvim
@@ -357,12 +357,12 @@ install_neovim_head () {
     fi
     log "Installing vim-plug Neovim plugin manager ..."
     curl -fsLo \
-         "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+         "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim-Plug/site/autoload/plug.vim \
          --create-dirs \
          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     [ $? -eq 0 ] || {
       curl -kfsLo \
-           "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+           "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim-Plug/site/autoload/plug.vim \
            --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     }
@@ -371,8 +371,8 @@ install_neovim_head () {
 }
 
 fixup_init_vim () {
-  NVIMCONF="${HOME}/.config/nvim/init.vim"
-  NVIMGLOB="${HOME}/.config/nvim/lua/globals.lua"
+  NVIMCONF="${HOME}/.config/nvim-Plug/init.vim"
+  NVIMGLOB="${HOME}/.config/nvim-Plug/lua/globals.lua"
   [ -f ${NVIMGLOB} ] && {
     python3_path=$(command -v python3)
     grep /usr/bin/python3 ${NVIMGLOB} > /dev/null && {

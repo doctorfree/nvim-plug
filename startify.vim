@@ -30,7 +30,7 @@ let g:startify_lists = [
     \ { 'type': 'commands',  'header': ['   Commands']       },
     \ ]
 let g:startify_bookmarks = [
-    \ { 'C': '~/.config/nvim/init.vim' },
+    \ { 'C': '~/.config/nvim-Plug/init.vim' },
     \ { 'Z': '~/.zshrc' },
     \]
 let g:startify_commands = [

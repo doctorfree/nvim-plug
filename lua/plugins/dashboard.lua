@@ -5,11 +5,11 @@ vim.g.dashboard_preview_pipeline = "lolcat"
 -- let g:dashboard_preview_file_width=70
 -- let g:dashboard_preview_file_height=10
 
--- vim.g.dashboard_session_directory = '~/.config/nvim/sessions'
+-- vim.g.dashboard_session_directory = '~/.config/nvim-Plug/sessions'
 -- vim.g.dashboard_default_executive = 'telescope'
 -- vim.cmd("let g:dashboard_default_executive = 'telescope'")
--- vim.cmd("let g:dashboard_session_directory = $HOME..'/.config/nvim/sessions'")
--- vim.cmd("let packages = len(globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1))")
+-- vim.cmd("let g:dashboard_session_directory = $HOME..'/.config/nvim-Plug/sessions'")
+-- vim.cmd("let packages = len(globpath('~/.local/share/nvim-Plug/site/pack/packer/start', '*', 0, 1))")
 
 -- vim.api.nvim_exec([[
 --     let g:dashboard_custom_footer = ['LuaJIT loaded '..packages..' packages']
@@ -22,7 +22,7 @@ vim.g.dashboard_preview_pipeline = "lolcat"
 --     d = {description = {'  Jump to Bookmark               SPC f b'}, command = 'Telescope project'},
 --     e = {description = {'  Find File                      SPC f f'}, command = 'Telescope find_files'},
 --     f = {description = {'  Find Word                      SPC s p'}, command = 'Telescope live_grep'},
---     g = {description = {'  Open Neovim Configuration     SPC f P'}, command = ':e ~/.config/nvim/init.vim'},
+--     g = {description = {'  Open Neovim Configuration     SPC f P'}, command = ':e ~/.config/nvim-Plug/init.vim'},
 -- }
 
 vim.g.dashboard_custom_header = {
